@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Beeny Playlist</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #888888; /* พื้นหลังสีเทา */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* ส่วนของข้อความ */
+        .playlist-title, .sad-text {
+            font-size: 3rem;
+            font-weight: bold;
+            color: white;
+            position: absolute;
+            top: 20%;
+            opacity: 0;
+        }
+
+        .playlist-title {
+            animation: fadeSlide 4s ease-in-out forwards;
+        }
+
+        .sad-text {
+            animation: fadeSlide 4s ease-in-out forwards 4s; /* หน่วง 4 วินาที เพื่อให้ขึ้นทีหลัง */
+        }
+
+        /* เอฟเฟกต์ให้ข้อความเลื่อนขึ้นแล้วจางหาย */
+        @keyframes fadeSlide {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+        }
+
+        .scroll-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 15px;
+            padding: 20px;
+            width: 90vw;
+            height: 80vh;
+            white-space: nowrap;
+            background-color: #666;
+            border-radius: 15px;
+            scroll-behavior: smooth;
+        }
+
+        .video {
+            flex: 0 0 auto;
+            width: 30vw;
+            max-width: 400px;
+            scroll-snap-align: start;
+            border-radius: 10px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+        }
+
+        .scroll-container::-webkit-scrollbar {
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- ข้อความแรก -->
+    <div class="playlist-title">My Beeny Playlist</div>
+
+    <!-- ข้อความที่สอง -->
+    <div class="sad-text">เศร้าชิบหาย เศร้าสัสๆ : (</div>
+
+    <div class="scroll-container" id="scroll-container">
+        <div class="video">
+            <iframe src="https://www.youtube.com/embed/t3Q8yjkPCrc" allowfullscreen></iframe>
+        </div>
+        <div class="video">
+            <iframe src="https://www.youtube.com/embed/Te_EwJvJNec" allowfullscreen></iframe>
+        </div>
+        <div class="video">
+            <iframe src="https://www.youtube.com/embed/QNBflS2e3ng" allowfullscreen></iframe>
+        </div>
+        <div class="video">
+            <iframe src="https://www.youtube.com/embed/ROj0y2bKQNM" allowfullscreen></iframe>
+        </div>
+        <div class="video">
+            <iframe src="https://www.youtube.com/embed/ksX5GvUB418" allowfullscreen></iframe>
+        </div>
+        <div class="video">
+            <iframe src="https://www.youtube.com/embed/Ok8BVWQwSS4" allowfullscreen></iframe>
+        </div>
+        <div class="video">
+            <iframe src="https://www.youtube.com/embed/PKNdFSv7Xa0" allowfullscreen></iframe>
+        </div>
+        <div class="video">
+            <iframe src="https://www.youtube.com/embed/TwpCimGy5eQ" allowfullscreen></iframe>
+        </div>
+        <div class="video">
+            <iframe src="https://www.youtube.com/embed/fRYbUiM2pm0" allowfullscreen></iframe>
+        </div>
+        <div class="video">
+            <iframe src="https://www.youtube.com/embed/UOOQWrrZDgY" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <script>
+        const scrollContainer = document.getElementById("scroll-container");
+
+        scrollContainer.addEventListener("wheel", (evt) => {
+            evt.preventDefault();
+            scrollContainer.scrollLeft += evt.deltaY * 2;
+        });
+    </script>
+
+</body>
+</html>
